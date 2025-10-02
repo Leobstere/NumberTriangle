@@ -88,7 +88,18 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
+        if (path.isEmpty()) {
+            return this.root;
+        }
+
+        Character c = path.charAt(0);
+
+        if (c.equals('l')){
+            return this.left.retrieve(path.substring(1));
+        }else if (c.equals('r')){
+            return this.right.retrieve(path.substring(1));
+        }
+
         return -1;
     }
 
@@ -115,19 +126,26 @@ public class NumberTriangle {
         // will need to return the top of the NumberTriangle,
         // so might want a variable for that.
         NumberTriangle top = null;
+        NumberTriangle right = null;
+        NumberTriangle left = null;
 
         String line = br.readLine();
+        System.out.println("read first line");
+        NumberTriangle current = new NumberTriangle(Integer.parseInt(line));
+
         while (line != null) {
+            String[] topParts = line.split(" ");
 
-            // remove when done; this line is included so running starter code prints the contents of the file
+            for(int i = 0; i < topParts.length; i++){
+
+            }
             System.out.println(line);
-
-            // TODO process the line
 
             //read the next line
             line = br.readLine();
+            System.out.println("next line read");
         }
-        br.close();
+
         return top;
     }
 
